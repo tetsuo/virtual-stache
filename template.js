@@ -2,9 +2,7 @@ var escape = require('escape-html');
 
 module.exports = Template;
 
-function Template () {
-  this.root = [];
-}
+function Template () {}
 
 var TAG = 0, ATTRS = 1, CHILDREN = 2, PARENT = 3,
     SECTION = 2, VARIABLE = 3, NAME = 1;
