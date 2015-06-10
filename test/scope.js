@@ -7,29 +7,29 @@ test('scope', function (t) {
   var s = compile();
   var expected = [
     {
-      tag: "x", attrs: {},
+      tag: "x", props: {},
       children: [
         { text: "555" },
         { text: "xyz" },
-        { tag: "k", attrs: {}, children: [ { text: "rre" } ] }
+        { tag: "k", props: {}, children: [ { text: "rre" } ] }
       ]
     },
     {
-      tag: "x", attrs: {},
+      tag: "x", props: {},
       children: [
         {
-          tag: "u", attrs: {},
+          tag: "u", props: {},
           children: [
             {
-              tag: "k", attrs: {},
+              tag: "k", props: {},
               children: [
                 { text: "ram" },
                 { text: "8" },
-                { tag: "z", attrs: {}, children: [] },
+                { tag: "z", props: {}, children: [] },
                 { text: "8" },
-                { tag: "z", attrs: {}, children: [] },
+                { tag: "z", props: {}, children: [] },
                 { text: "8" },
-                { tag: "z", attrs: {}, children: [] }
+                { tag: "z", props: {}, children: [] }
               ]
             }
           ]
@@ -48,7 +48,7 @@ test('scope', function (t) {
       ]
     },
     {
-      tag: "x", attrs: {},
+      tag: "x", props: {},
       children: [
         { text: "sd" },
         { text: "12" },

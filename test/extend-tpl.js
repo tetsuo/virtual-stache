@@ -14,7 +14,7 @@ test('extend template', function (t) {
   s.on('data', function (render) {
     var actual = render.call(null, { s: "555" }, require('./types'), Template);
     t.deepEqual(actual, {
-      tag: "x", attrs: {},
+      tag: "x", props: {},
       children: [ { text: "qux" }, { text: "qux" } ]
     });
     t.end();

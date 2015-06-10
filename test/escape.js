@@ -9,7 +9,7 @@ test('escape', function (t) {
     var actual = render.call(new Template, { s: "<<" },
                              extend({ escape: true }, require('./types')));
     t.deepEqual(actual, {
-      tag: "x", attrs: {},
+      tag: "x", props: {},
       children: [ { text: "y&gt;y" }, { text: "&lt;&lt;" } ]
     });
     t.end();

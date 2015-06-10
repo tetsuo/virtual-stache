@@ -17,6 +17,12 @@ Template.prototype = {
     return String(s);
   },
 
+  p: function (s) {
+    if (Object.keys(s).length)
+      return { attributes: s };
+    return {};
+  },
+
   r: function (state, opts) {
     if (!state) state = {};
     if (!opts) opts = {};
@@ -32,7 +38,7 @@ Template.prototype = {
     function traverse (acc, node) {
       if (Array.isArray(node)) {
         if ('string' === typeof node[TAG]) {
-          node = new Node(node[TAG], node[ATTRS], node[CHILDREN].reduce(traverse, []));
+          node = new Node(node[TAG], self.p(node[ATTRS]), node[CHILDREN].reduce(traverse, []));
           if (!acc) return node;
           acc.push(node);
         } else if (SECTION === node[TAG]) {
