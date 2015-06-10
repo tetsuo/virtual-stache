@@ -59,15 +59,23 @@ function parse () {
           if (node.match(/^[\s\xa0]+$/g))
             break;
           else
-            throw new Error('top-level text node');
+            this.emit('error', new Error('top-level text'));
         } else
           top[top.length - 1].push(node);
         break;
       case 'variable':
+        if (state == IN_TEXT) {
+          this.emit('error', new Error('top-level variable'));
+          break;
+        }
         node = [VARIABLE, row[0]];
         top[top.length - 1].push(node);
         break;
       case 'section:open':
+        if (state == IN_TEXT) {
+          this.emit('error', new Error('top-level section'));
+          break;
+        }
         node = [SECTION, row[0], []];
         top.push(node[CHILDREN]);
         top[top.length - 2].push(node);
