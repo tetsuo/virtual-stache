@@ -1,23 +1,33 @@
-module.exports = Template;
+var escape = require('escape-html');
 
-var TAG = 0, ATTRS = 1, CHILDREN = 2, PARENT = 3,
-    SECTION = 2, VARIABLE = 3, NAME = 1;
+module.exports = Template;
 
 function Template () {
   this.root = [];
 }
+
+var TAG = 0, ATTRS = 1, CHILDREN = 2, PARENT = 3,
+    SECTION = 2, VARIABLE = 3, NAME = 1;
 
 Template.prototype = {
   s: function (root) {
     this.root = root;
   },
 
+  e: function (s) {
+    if (this.opts.escape) return escape(String(s));
+    return String(s);
+  },
+
   r: function (state, opts) {
     if (!state) state = {};
     if (!opts) opts = {};
 
-    var Node = opts.Node, Text = opts.Text,
+    var self = this,
+        Node = opts.Node, Text = opts.Text,
         top = [ state ];
+
+    self.opts = opts;
 
     return traverse(null, this.root);
 
@@ -30,10 +40,8 @@ Template.prototype = {
         } else if (SECTION === node[TAG]) {
           var tail = top[top.length - 1];
               val = tail[node[NAME]], isarr = false;
-
           if (!val || ((isarr = Array.isArray(val)) && val.length === 0))
             return acc;
-
           if (isarr) {
             top.push(val);
             val.forEach(function (x) {
@@ -45,14 +53,13 @@ Template.prototype = {
             top.push(('object' === typeof val) ? val : tail);
             node[CHILDREN].reduce(traverse, acc);
           }
-
           top.pop();
         } else if (VARIABLE === node[TAG]) {
           tail = top[top.length - 1];
-          acc.push(new Text(tail[node[NAME]]));
+          acc.push(new Text(self.e(tail[node[NAME]])));
         }
       } else {
-        acc.push(new Text(node));
+        acc.push(new Text(self.e(node)));
       }
       return acc;
     }

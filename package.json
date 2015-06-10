@@ -4,6 +4,7 @@
   "description": "template engine for creating virtual trees",
   "main": "index.js",
   "dependencies": {
+    "escape-html": "^1.0.2",
     "labeled-stream-splicer": "^1.0.2",
     "through2": "^0.6.5",
     "tokenize-stache": "^0.1.0"
