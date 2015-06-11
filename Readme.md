@@ -143,12 +143,10 @@ template:
 ```
 <ul>
   {#fruits}
-  <li>{name}</li>
-  <ul>
-    {#vitamins}
-    <li>{name}</li>
-    {/vitamins}
-  </ul>
+  <li>
+    {name}
+    {#vitamins}<span>{name}</span>{#vitamins}
+  </li>
   {/fruits}
 </ul>
 ```
@@ -173,12 +171,13 @@ output:
 
 ```html
 <ul>
-  <li>Kiwi</li>
-  <ul>
-    <li>B-6</li>
-    <li>C</li>
-  </ul>
-  <li>Mango</li>
+  <li>
+    Kiwi
+    <span>B-6</span><span>C</span>
+  </li>
+  <li>
+    Mango
+  </li>
 </ul>
 ```
 
