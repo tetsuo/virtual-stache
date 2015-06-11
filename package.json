@@ -1,6 +1,6 @@
 {
   "name": "virtual-stache",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "template engine for creating virtual trees",
   "main": "index.js",
   "dependencies": {
