@@ -2,6 +2,8 @@
 
 template engine for creating virtual trees.
 
+See [virtual-stachify](https://github.com/tetsuo/virtual-stachify) for the browserify transform.
+
 # example
 
 given this template:
