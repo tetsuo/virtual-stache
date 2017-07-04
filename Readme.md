@@ -4,6 +4,10 @@ template engine for creating virtual trees.
 
 See [virtual-stachify](https://github.com/tetsuo/virtual-stachify) for the browserify transform.
 
+### update
+
+This project is now ported to TypeScript and evolved into [xūs](https://github.com/tetsuo/xus). Stay tuned!
+
 # example
 
 given this template:
